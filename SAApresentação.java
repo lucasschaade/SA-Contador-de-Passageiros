@@ -3,8 +3,8 @@ public static void cadastrarOnibus() throws IOException {
         String placa = null;
         boolean cadastrar = true;
         while (cadastrar == true) {
-            boolean formatoinvalido = false;
-            while (formatoinvalido == false) {
+            boolean formatovalido = false;
+            while (formatovalido == false) {
                 placa = JOptionPane.showInputDialog(null, "Digite a placa do ônibus:\nFormato de placa: ABC1234", "CADASTRO ÔNIBUS", 3);
                 //tratamento do JOptionPane(opção cancel)
                 if (placa == null) {
@@ -14,10 +14,10 @@ public static void cadastrarOnibus() throws IOException {
                 //tratamento para formato da placa
                 if (validarPlaca(placa)) {
                     JOptionPane.showMessageDialog(null, "Placa validada com sucesso!", "CADASTRO ÔNIBUS", 1);
-                    formatoinvalido = true;
+                    formatovalido = true;
                 } else {
                     JOptionPane.showMessageDialog(null, "Formato da placa inválido!\nFormato esperado: ABC1234", "CADASTRO ÔNIBUS", 1);
-                    formatoinvalido = false;
+                    formatovalido = false;
                 }
             }
             String capacidadeMaxima = JOptionPane.showInputDialog(null, "Digite a capacidade máxima de passageiros:", "CADASTRO ÔNIBUS", 3);
@@ -80,7 +80,7 @@ public static void cadastrarViagem() throws IOException {
             for (int i = 0; i < listaonibus.size(); i++) {
                 Onibus onibus = listaonibus.get(i);//cria um objeto e adiciona todas as informaçoes do array list dentro desse objeto
                 relatorio = "\nPlaca: " + onibus.getPlaca()
-                        + "\nQuantidade maxima de Passageiros: " + onibus.getCapacitadeMaxima();
+                        + "\nCapacidade maxima de Passageiros: " + onibus.getCapacitadeMaxima();
                 relatoriocompleto += relatorio;
             }
             JOptionPane.showMessageDialog(null, "Selecione um ônibus para viagem!", "CADASTRO VIAGEM", 1);
@@ -137,10 +137,10 @@ public static void cadastrarViagem() throws IOException {
                         qtdEmbarque = random.nextInt(onibus.getCapacitadeMaxima() - onibus.getQtdAtual());//quantidade de passageiros que embarcam a cada parada
                         onibus.setQtdAtual(onibus.getQtdAtual() + qtdEmbarque);//atualiza a quantidade atual de passageiros do ônibus
                         if (j != 1) {
-                            qtdDesembarque = random.nextInt(onibus.getQtdAtual());//quantidade de passageiros que embarcam a cada parada
+                            qtdDesembarque = random.nextInt(onibus.getQtdAtual());//quantidade de passageiros que desembarcam a cada parada
                             onibus.setQtdAtual(onibus.getQtdAtual() - qtdDesembarque);//atualiza a quantidade atual de passageiros do ônibus
                         }
-                        qtdPassageirosViagem += qtdEmbarque;//atualiza o total de passageiros que entraram no ônibus  a cada parada
+                        qtdPassageirosViagem += qtdEmbarque;//atualiza o total de passageiros que entra no ônibus a cada parada
                     }
                 }
             }
